@@ -5,7 +5,7 @@ const cloudinary = require("../config/cloudinaryConfig");
 const fs = require("fs");
 
 const userRegister = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const { name, email, password } = req.body;
 
@@ -39,7 +39,7 @@ const userRegister = async (req, res) => {
 };
 
 const userLogin = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).send({ message: "All fields are mandatory" });
@@ -62,11 +62,11 @@ const userLogin = async (req, res) => {
 };
 
 const updateUserInfo = async (req, res) => {
-  console.log(req.params);
+  // console.log(req.params);
   try {
     const user = await Users.findById(req.params.id);
     const { name, email, gender, phone, age, address, password } = req.body;
-    console.log(user);
+    // console.log(user);
     if (user) {
       const isMatched = await Users.isPasswordMatched(email, password);
       if (isMatched) {

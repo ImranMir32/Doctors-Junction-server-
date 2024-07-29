@@ -69,7 +69,7 @@ usersSchema.pre("save", function (next) {
 
 usersSchema.static("isPasswordMatched", async function (email, password) {
   const user = await this.findOne({ email });
-  console.log("->", user);
+  // console.log("->", user);
   if (!user) throw new Error("User not found!");
 
   const salt = user.salt;
@@ -89,7 +89,7 @@ usersSchema.static(
   "matchPasswordAndCreateToken",
   async function (email, password) {
     const user = await this.findOne({ email });
-    console.log("->", user);
+    // console.log("->", user);
     if (!user) throw new Error("User not found!");
 
     const salt = user.salt;

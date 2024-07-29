@@ -8,10 +8,10 @@ const getAllappointments = async (req, res) => {
       .populate("userId")
       .populate("doctorId");
 
-    console.log("Appointments fetched successfully", allAppointments);
+    // console.log("Appointments fetched successfully", allAppointments);
     return res.send(allAppointments);
   } catch (error) {
-    console.error("Error fetching applicants:", error);
+    // console.error("Error fetching applicants:", error);
     return res.status(500).send(`Unable to get non-doctors: ${error.message}`);
   }
 };
@@ -22,10 +22,10 @@ const personalAppointments = async (req, res) => {
       .populate("userId")
       .populate("doctorId");
 
-    console.log("Personal Appointments fetched successfully", allAppointments);
+    // console.log("Personal Appointments fetched successfully", allAppointments);
     return res.send(allAppointments);
   } catch (error) {
-    console.error("Error fetching applicants:", error);
+    // console.error("Error fetching applicants:", error);
     return res.status(500).send(`Unable to get non-doctors: ${error.message}`);
   }
 };
@@ -36,10 +36,10 @@ const requestAppointments = async (req, res) => {
       .populate("userId")
       .populate("doctorId");
 
-    console.log("Appointments fetched successfully", allAppointments);
+    // console.log("Appointments fetched successfully", allAppointments);
     return res.send(allAppointments);
   } catch (error) {
-    console.error("Error fetching applicants:", error);
+    // console.error("Error fetching applicants:", error);
     return res.status(500).send(`Unable to get non-doctors: ${error.message}`);
   }
 };
@@ -74,7 +74,7 @@ const bookappointment = async (req, res) => {
       .status(201)
       .send({ result, msg: "Your appointment has been booked successfully" });
   } catch (error) {
-    console.log("error", error);
+    // console.log("error", error);
     res.status(500).send("Unable to book appointment");
   }
 };

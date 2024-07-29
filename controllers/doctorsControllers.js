@@ -5,7 +5,7 @@ const Notifications = require("../models/notifications.model");
 
 const getApplicantdoctors = async (req, res) => {
   try {
-    console.log("Fetching applicants", req.locals);
+    // console.log("Fetching applicants", req.locals);
 
     const docs = await Doctors.find({ isDoctor: false })
       .find({
@@ -13,17 +13,17 @@ const getApplicantdoctors = async (req, res) => {
       })
       .populate("userId");
 
-    console.log("Applicants fetched successfully", docs);
+    // console.log("Applicants fetched successfully", docs);
     return res.send(docs);
   } catch (error) {
-    console.error("Error fetching applicants:", error);
+    // console.error("Error fetching applicants:", error);
     return res.status(500).send(`Unable to get non-doctors: ${error.message}`);
   }
 };
 
 const applyAsDoctor = async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const isFound = await Doctors.findOne({ userId: req.locals });
     if (isFound) {
       return res.status(400).send("Application already exists");
@@ -38,7 +38,7 @@ const applyAsDoctor = async (req, res) => {
       experience,
       fees,
     });
-    console.log(newApplication);
+    // console.log(newApplication);
     if (newApplication) {
       return res.status(201).json("Application submitted successfully");
     } else {
@@ -51,7 +51,7 @@ const applyAsDoctor = async (req, res) => {
 
 const acceptdoctor = async (req, res) => {
   try {
-    console.log("->", req.params.id);
+    // console.log("->", req.params.id);
     const user = await Users.findOneAndUpdate(
       { _id: req.params.id },
       { isDoctor: true, status: "accepted" }
@@ -68,7 +68,7 @@ const acceptdoctor = async (req, res) => {
     });
 
     await notification.save();
-    console.log("accpted");
+    // console.log("accpted");
     return res.status(201).send("Application accepted notification sent");
   } catch (error) {
     res.status(500).send("Error while sending notification");
@@ -128,7 +128,7 @@ const deleteDoctor = async (req, res) => {
     });
     return res.send("Doctor deleted successfully");
   } catch (error) {
-    console.log("error", error);
+    // console.log("error", error);
     res.status(500).send("Unable to delete doctor");
   }
 };
