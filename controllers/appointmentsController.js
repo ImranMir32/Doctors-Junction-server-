@@ -64,7 +64,7 @@ const bookappointment = async (req, res) => {
 
     const doctornotification = Notifications({
       userId: req.body.doctorId,
-      content: `You have an appointment with ${user.firstname} ${user.lastname} on ${req.body.date} at ${req.body.time}`,
+      content: `You have an appointment with ${user.name} on ${req.body.date} at ${req.body.time}`,
     });
 
     await doctornotification.save();
